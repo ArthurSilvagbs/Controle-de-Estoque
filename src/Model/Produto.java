@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.Iterator;
+
 public class Produto {
 
     private Integer id;
@@ -46,5 +48,10 @@ public class Produto {
 
     public void setPrecoUnitario(Double precoUnitario) {
         this.precoUnitario = precoUnitario;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %d | NOME: %s | PREÇO UNITARIO: R$ %.2f", id, nome, precoUnitario);
     }
 }

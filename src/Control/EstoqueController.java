@@ -15,4 +15,12 @@ public class EstoqueController {
 
         this.estoque.salvarProduto(new Produto(id, nome, precoUnitario));
     }
+
+    public void removerProduto(String nomeProduto) {
+        this.estoque.removerProduto(nomeProduto);
+    }
+
+    public void imprimirProduto(String nomeproduto) {
+        this.estoque.getProduto(nomeproduto);
+    }
 }

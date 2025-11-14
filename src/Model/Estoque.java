@@ -1,7 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Iterator;
 
 public class Estoque {
 
@@ -13,14 +13,32 @@ public class Estoque {
         listaProdutos.add(produto);
     }
 
-    public void removerProduto(Produto produto, int idDigitado) {
-        for(Produto p : listaProdutos) {
-            int idCopia = p.getId();
-            if (idCopia == idDigitado) {
-                listaProdutos.remove(produto);
+    public void removerProduto(String nomeProduto) {
+
+        boolean sucesso = false;
+        Iterator<Produto> iterator = listaProdutos.iterator();
+
+        while (iterator.hasNext()) {
+            Produto p = iterator.next();
+
+            if (p.getNome().equalsIgnoreCase(nomeProduto)) {
+                iterator.remove();
+
+                sucesso = true;
+
             }
         }
+
     }
 
+    public Produto getProduto(String nome) {
+
+        for (Produto p : listaProdutos) {
+            if (p.getNome().equalsIgnoreCase(nome)) {
+                return p;
+            }
+        }
+        return null;
+    }
 
 }
