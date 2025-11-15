@@ -16,8 +16,9 @@ public class EstoqueController {
         this.estoque.salvarProduto(new Produto(id, nome, precoUnitario));
     }
 
-    public void removerProduto(String nomeProduto) {
+    public boolean removerProduto(String nomeProduto) {
         this.estoque.removerProduto(nomeProduto);
+        return true;
     }
 
     public void imprimirProduto(String nomeproduto) {

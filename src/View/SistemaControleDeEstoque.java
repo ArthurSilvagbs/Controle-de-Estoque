@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class SistemaControleDeEstoque {
 
-    static void main() {
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
@@ -72,7 +72,7 @@ public class SistemaControleDeEstoque {
                             break;
 
                         case 2:
-                            int opcaoRemoverProduto = 0;
+                            int opcaoRemoverProduto;
 
                             do {
                                 System.out.println("\nREMOVER PRODUTO");
@@ -82,18 +82,36 @@ public class SistemaControleDeEstoque {
 
                                 System.out.println("Confirma que é esse produto?");
                                 System.out.println("""
-                                        [ 1 ] SIM
-                                        [ 2 ] NÃO
-                                        
-                                        Selecione uma opção:\s""");
+                                            [ 1 ] SIM
+                                            [ 2 ] NÃO
+                                            
+                                            Selecione uma opção:\s""");
                                 int opcaoConfirmacao = sc.nextInt();
                                 sc.nextLine();
 
-                                if (opcaoConfirmacao == 1) {
-                                    estoque.removerProduto(nomeProduto);
-                                    System.out.println("PRODUTO REMOVID0");
+                                while (opcaoConfirmacao < 1 || opcaoConfirmacao > 2) {
+                                    System.out.println("Opção Inválida! Tente novamente");
+
+                                    System.out.println("\nConfirma que é esse produto?");
+                                    System.out.println("""
+                                            [ 1 ] SIM
+                                            [ 2 ] NÃO
+                                            
+                                            Selecione uma opção:\s""");
+                                    opcaoConfirmacao = sc.nextInt();
+                                    sc.nextLine();
                                 }
 
+                                if (opcaoConfirmacao == 1) {
+                                    boolean validacao = estoque.removerProduto(nomeProduto);
+
+                                    if (validacao) {
+                                        System.out.println("PRODUTO REMOVID0");
+                                    }else {
+                                        System.out.println("Erro!");
+                                    }
+
+                                }
 
                                 System.out.print("""
                                     \n
@@ -105,6 +123,21 @@ public class SistemaControleDeEstoque {
                                     Selecione uma opção:\s""");
                                 opcaoRemoverProduto = sc.nextInt();
                                 sc.nextLine();
+
+                                while (opcaoRemoverProduto < 1 || opcaoRemoverProduto > 2) {
+                                    System.out.println("Opção Inválida! Tente novamente");
+
+                                    System.out.print("""
+                                    \n
+                                    REMOVER UM OUTRO PRODUTO?
+                                    
+                                    [ 1 ] SIM
+                                    [ 2 ] NÃO
+                                    
+                                    Selecione uma opção:\s""");
+                                    opcaoRemoverProduto = sc.nextInt();
+                                    sc.nextLine();
+                                }
 
 
                             } while (opcaoRemoverProduto == 1);
@@ -126,6 +159,7 @@ public class SistemaControleDeEstoque {
                             
                             Selecione um opção:\s""");
                     int opcaoMenuUser = sc.nextInt();
+                    sc.nextLine();
 
                     break;
                 case 3:

@@ -13,7 +13,7 @@ public class Estoque {
         listaProdutos.add(produto);
     }
 
-    public void removerProduto(String nomeProduto) {
+    public boolean removerProduto(String nomeProduto) {
 
         boolean sucesso = false;
         Iterator<Produto> iterator = listaProdutos.iterator();
@@ -26,9 +26,11 @@ public class Estoque {
 
                 sucesso = true;
 
+                return sucesso;
             }
         }
 
+        return sucesso;
     }
 
     public Produto getProduto(String nome) {
