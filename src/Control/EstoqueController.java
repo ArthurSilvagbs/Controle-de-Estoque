@@ -5,7 +5,7 @@ import Model.Produto;
 
 public class EstoqueController {
 
-    private Estoque estoque;
+    private final Estoque estoque;
 
     public EstoqueController(Estoque estoque) {
         this.estoque = estoque;

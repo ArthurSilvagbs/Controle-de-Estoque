@@ -18,14 +18,6 @@ public class Produto {
         this(id, nome, null);
     }
 
-//    public Produto(String nome) {
-//        this(null , nome, null, null);
-//    }
-//
-//    public Produto(Integer id) {
-//        this(id, null, null, null);
-//    }
-
     public int getId() {
         return id;
     }

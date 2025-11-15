@@ -67,6 +67,11 @@ public class SistemaControleDeEstoque {
                                     Selecione uma opção:\s""");
                                 opcaoCadastrarNovoProduto = sc.nextInt();
                                 sc.nextLine();
+
+                                if (opcaoCadastrarNovoProduto == 2) {
+                                    break;
+                                }
+
                             } while (opcaoCadastrarNovoProduto == 1);
 
                             break;
@@ -89,6 +94,10 @@ public class SistemaControleDeEstoque {
                                 int opcaoConfirmacao = sc.nextInt();
                                 sc.nextLine();
 
+                                if (opcaoConfirmacao == 2) {
+                                    break;
+                                }
+
                                 while (opcaoConfirmacao < 1 || opcaoConfirmacao > 2) {
                                     System.out.println("Opção Inválida! Tente novamente");
 
@@ -100,6 +109,10 @@ public class SistemaControleDeEstoque {
                                             Selecione uma opção:\s""");
                                     opcaoConfirmacao = sc.nextInt();
                                     sc.nextLine();
+
+                                    if (opcaoConfirmacao == 2) {
+                                        break;
+                                    }
                                 }
 
                                 if (opcaoConfirmacao == 1) {
@@ -124,6 +137,10 @@ public class SistemaControleDeEstoque {
                                 opcaoRemoverProduto = sc.nextInt();
                                 sc.nextLine();
 
+                                if (opcaoRemoverProduto == 2) {
+                                    break;
+                                }
+
                                 while (opcaoRemoverProduto < 1 || opcaoRemoverProduto > 2) {
                                     System.out.println("Opção Inválida! Tente novamente");
 
@@ -137,12 +154,22 @@ public class SistemaControleDeEstoque {
                                     Selecione uma opção:\s""");
                                     opcaoRemoverProduto = sc.nextInt();
                                     sc.nextLine();
+
+                                    if (opcaoRemoverProduto == 2) {
+                                        break;
+                                    }
                                 }
 
 
                             } while (opcaoRemoverProduto == 1);
 
                             break;
+
+                        case 3:
+                            System.out.println("DAR ENTRADA A UM PRODUTO NO ESTOQUE");
+
+
+
                     }
 
                     break;
@@ -158,7 +185,7 @@ public class SistemaControleDeEstoque {
                             [ 5 ] VOLTAR AO MENU PRINCIPAL
                             
                             Selecione um opção:\s""");
-                    int opcaoMenuUser = sc.nextInt();
+                    //int opcaoMenuUser = sc.nextInt();
                     sc.nextLine();
 
                     break;

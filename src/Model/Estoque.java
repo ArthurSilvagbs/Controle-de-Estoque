@@ -33,14 +33,14 @@ public class Estoque {
         return sucesso;
     }
 
-    public Produto getProduto(String nome) {
+    public void getProduto(String nome) {
 
         for (Produto p : listaProdutos) {
             if (p.getNome().equalsIgnoreCase(nome)) {
-                return p;
+                return;
             }
         }
-        return null;
     }
+
 
 }
