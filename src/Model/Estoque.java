@@ -37,8 +37,6 @@ public class Estoque {
               if (listaProdutos.size() > 0) {
                   if (identificador.equalsIgnoreCase(produto.getNome()) || identificador.equalsIgnoreCase(idTemporario)) {
                       return produto;
-                  } else {
-                      break;
                   }
               } else {
                   break;

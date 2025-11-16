@@ -2,6 +2,7 @@ package View;
 
 import Control.EstoqueController;
 import Model.Estoque;
+import Model.Produto;
 
 import java.util.Scanner;
 
@@ -82,10 +83,10 @@ public class ControleDeEstoque {
                     removerProduto();
                     break;
                 case 3:
-                    //darEntradaProduto();
+                    darEntradaProduto();
                     break;
                 case 4:
-                    //darBaixaProduto();
+                    darBaixaProduto();
                     break;
                 case 5:
                     //consultarProduto();
@@ -105,8 +106,6 @@ public class ControleDeEstoque {
 
     public static void menuUsuario() {
         do {
-
-
             System.out.println("======================================================\n");
             System.out.println("==================== MENU USUARIO ====================\n");
             System.out.println("======================================================\n");
@@ -125,10 +124,10 @@ public class ControleDeEstoque {
 
             switch (opcaoMenuUsuario) {
                 case 1:
-                    //darEntradaProduto();
+                    darEntradaProduto();
                     break;
                 case 2:
-                    //darBaixaProduto();
+                    darBaixaProduto();
                     break;
                 case 3:
                     //consultarProduto();
@@ -189,7 +188,15 @@ public class ControleDeEstoque {
             System.out.print("\nNOME do produto: ");
             String nomeProduto = sc.nextLine();
 
-            //System.out.println(estoque.imprimirProduto(nomeProduto));
+            Produto p = estoque.BuscarProduto(nomeProduto);
+
+            if (p != null) {
+                System.out.println(p);
+            } else {
+                System.out.println("Produto não encontrado!");
+                System.out.println("\nVerifique se o NOME ou o ID foram digitados corretamente.");
+                continue;
+            }
 
             System.out.println("Confirma que é esse produto?");
             System.out.println("""
@@ -209,7 +216,6 @@ public class ControleDeEstoque {
                     }else {
                         System.out.println("Erro ao removerproduto!");
                     }
-
                     break;
 
                 case 2:
@@ -245,8 +251,156 @@ public class ControleDeEstoque {
 
     public static void darEntradaProduto() {
         do {
+            System.out.println("DAR ENTRADA EM UM PRODUTO NO ESTOQUE");
+            System.out.println("""
+                    Pesquisa de produto (ID ou NOME):
+                    
+                    Digite aqui:\s""");
 
+            String identificador = sc.nextLine();
 
+            Produto p = estoque.BuscarProduto(identificador);
+
+            if (p != null) {
+                System.out.println(p);
+            } else {
+                System.out.println("Produto não encontrado!");
+                System.out.println("\nVerifique se o NOME ou o ID foram digitados corretamente.");
+                continue;
+            }
+
+            System.out.println("Confirma que é esse produto?");
+            System.out.println("""
+                    [ 1 ] SIM
+                    [ 2 ] NÃO
+                    
+                    Selecione uma opção:\s""");
+            int opcaoConfirmacao = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcaoConfirmacao) {
+                case 1:
+
+                    System.out.print("Quantidade a entrar no estoque: ");
+                    int quantidade = sc.nextInt();
+                    sc.nextLine();
+
+                    if (estoque.darEntradaNoEstoque(identificador, quantidade)) {
+                        System.out.println("Entrada feita com sucesso!");
+                    } else {
+                        System.out.println("Erro na entrada!");
+                    }
+
+                    break;
+
+                case 2:
+                    continue;
+
+                default:
+                    System.out.println("Opção inválida!");
+
+            }
+
+            System.out.println();
+
+            System.out.print("""
+                    \n
+                    DAR ENTRADA EM UM OUTRO PRODUTO?
+                    
+                    [ 1 ] SIM
+                    [ 2 ] NÃO
+                    
+                    Selecione uma opção:\s""");
+            int opcaoDarEntradaOutroProduto = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcaoDarEntradaOutroProduto) {
+                case 1:
+                    break;
+                case 2:
+                    System.out.println("Voltando ao menu principal!");
+                    return;
+                default:
+                    System.out.println("Opção inválida!");
+            }
+
+        } while (true);
+    }
+
+    public static void darBaixaProduto() {
+        do {
+            System.out.println("DAR BAIXA EM UM PRODUTO NO ESTOQUE");
+            System.out.println("""
+                    Pesquisa de produto (ID ou NOME):
+                    
+                    Digite aqui:\s""");
+
+            String identificador = sc.nextLine();
+
+            Produto p = estoque.BuscarProduto(identificador);
+
+            if (p != null) {
+                System.out.println(p);
+            } else {
+                System.out.println("Produto não encontrado!");
+                System.out.println("\nVerifique se o NOME ou o ID foram digitados corretamente.");
+                continue;
+            }
+
+            System.out.println("Confirma que é esse produto?");
+            System.out.println("""
+                    [ 1 ] SIM
+                    [ 2 ] NÃO
+                    
+                    Selecione uma opção:\s""");
+            int opcaoConfirmacao = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcaoConfirmacao) {
+                case 1:
+
+                    System.out.print("Quantidade a sair no estoque: ");
+                    int quantidade = sc.nextInt();
+                    sc.nextLine();
+
+                    if (estoque.darBaixaNoEstoque(identificador, quantidade)) {
+                        System.out.println("Baixa feita com sucesso!");
+                    } else {
+                        System.out.println("Erro na entrada!");
+                    }
+
+                    break;
+
+                case 2:
+                    continue;
+
+                default:
+                    System.out.println("Opção inválida!");
+
+            }
+
+            System.out.println();
+
+            System.out.print("""
+                    \n
+                    DAR BAIXA EM UM OUTRO PRODUTO?
+                    
+                    [ 1 ] SIM
+                    [ 2 ] NÃO
+                    
+                    Selecione uma opção:\s""");
+            int opcaoDarEntradaOutroProduto = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcaoDarEntradaOutroProduto) {
+                case 1:
+                    break;
+                case 2:
+                    System.out.println("Voltando ao menu principal!");
+                    return;
+                default:
+                    System.out.println("Opção inválida!");
+            }
 
         } while (true);
     }

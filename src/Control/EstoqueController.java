@@ -20,8 +20,27 @@ public class EstoqueController {
         return true;
     }
 
-    public String imprimirProduto(String nome) {
-        Produto p = this.estoque.acharProdutoNaLista(nome);
-        return p.toString();
+    public Produto BuscarProduto(String nome) {
+        return this.estoque.acharProdutoNaLista(nome);
+    }
+
+    public boolean darEntradaNoEstoque(String identificador, int quantidade) {
+        Produto p = this.estoque.acharProdutoNaLista(identificador);
+        if (p != null) {
+            p.setQuantidade(p.getQuantidade() + quantidade);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean darBaixaNoEstoque(String identificador, int quantidade) {
+        Produto p = this.estoque.acharProdutoNaLista(identificador);
+        if (p != null) {
+            p.setQuantidade(p.getQuantidade() - quantidade);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
