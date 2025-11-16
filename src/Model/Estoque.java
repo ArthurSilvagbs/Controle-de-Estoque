@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 public class Estoque {
 
-    private ArrayList<Produto> listaProdutos = new ArrayList<>();
+    private final ArrayList<Produto> listaProdutos = new ArrayList<>();
 
     public Estoque() {}
 
@@ -15,7 +15,6 @@ public class Estoque {
 
     public boolean removerProduto(String nomeProduto) {
 
-        boolean sucesso = false;
         Iterator<Produto> iterator = listaProdutos.iterator();
 
         while (iterator.hasNext()) {
@@ -24,13 +23,10 @@ public class Estoque {
             if (p.getNome().equalsIgnoreCase(nomeProduto)) {
                 iterator.remove();
 
-                sucesso = true;
-
-                return sucesso;
+                return true;
             }
         }
-
-        return sucesso;
+        return false;
     }
 
     public void getProduto(String nome) {

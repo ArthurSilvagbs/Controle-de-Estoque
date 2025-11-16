@@ -15,10 +15,6 @@ public class Produto {
         contadorId += 1;
     }
 
-    public Produto(Integer id, String nome) {
-        this(nome, null);
-    }
-
     public int getId() {
         return id;
     }

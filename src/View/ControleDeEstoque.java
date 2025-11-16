@@ -158,7 +158,7 @@ public class ControleDeEstoque {
 
             estoque.cadastrarNovoProduto(nome, precoUnitario);
 
-            System.out.println("Produto cadastrado com sucesso!");
+            System.out.println("\nProduto cadastrado com sucesso!\n");
 
             System.out.println("""
                     CADASTRAR UM NOVO PRODUTO?
