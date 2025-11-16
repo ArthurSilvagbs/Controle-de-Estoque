@@ -1,29 +1,26 @@
 package Model;
 
-import java.util.Iterator;
-
 public class Produto {
+
+    private static int contadorId = 1;
 
     private Integer id;
     private String nome;
     private Double precoUnitario;
 
-    public Produto(Integer id, String nome, Double precoUnitario) {
-        this.id = id;
+    public Produto(String nome, Double precoUnitario) {
+        this.id = contadorId;
         this.nome = nome;
         this.precoUnitario = precoUnitario;
+        contadorId += 1;
     }
 
     public Produto(Integer id, String nome) {
-        this(id, nome, null);
+        this(nome, null);
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNome() {
