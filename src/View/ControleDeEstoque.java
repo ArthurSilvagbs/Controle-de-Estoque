@@ -189,7 +189,7 @@ public class ControleDeEstoque {
             System.out.print("\nNOME do produto: ");
             String nomeProduto = sc.nextLine();
 
-            estoque.imprimirProduto(nomeProduto);
+            //System.out.println(estoque.imprimirProduto(nomeProduto));
 
             System.out.println("Confirma que é esse produto?");
             System.out.println("""
@@ -240,6 +240,14 @@ public class ControleDeEstoque {
                 default:
                     System.out.println("Opção inválida!");
             }
+        } while (true);
+    }
+
+    public static void darEntradaProduto() {
+        do {
+
+
+
         } while (true);
     }
 }

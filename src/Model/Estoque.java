@@ -29,14 +29,26 @@ public class Estoque {
         return false;
     }
 
-    public void getProduto(String nome) {
+    public Produto acharProdutoNaLista(String identificador) {
+          for (Produto produto: listaProdutos) {
 
-        for (Produto p : listaProdutos) {
-            if (p.getNome().equalsIgnoreCase(nome)) {
-                return;
-            }
-        }
+              String idTemporario = String.valueOf(produto.getId());
+
+              if (listaProdutos.size() > 0) {
+                  if (identificador.equalsIgnoreCase(produto.getNome()) || identificador.equalsIgnoreCase(idTemporario)) {
+                      return produto;
+                  } else {
+                      break;
+                  }
+              } else {
+                  break;
+              }
+          }
+
+          return null;
     }
+
+
 
 
 }

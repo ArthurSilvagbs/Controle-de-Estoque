@@ -20,7 +20,8 @@ public class EstoqueController {
         return true;
     }
 
-    public void imprimirProduto(String nomeproduto) {
-        this.estoque.getProduto(nomeproduto);
+    public String imprimirProduto(String nome) {
+        Produto p = this.estoque.acharProdutoNaLista(nome);
+        return p.toString();
     }
 }
