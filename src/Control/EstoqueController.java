@@ -3,6 +3,8 @@ package Control;
 import Model.Estoque;
 import Model.Produto;
 
+import java.util.ArrayList;
+
 public class EstoqueController {
 
     private final Estoque estoque;
@@ -43,4 +45,9 @@ public class EstoqueController {
             return false;
         }
     }
+
+    public ArrayList<Produto> obterListaCompleta() {
+        return this.estoque.listarTodosOsProdutos();
+    }
+
 }

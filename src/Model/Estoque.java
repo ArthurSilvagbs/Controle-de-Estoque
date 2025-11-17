@@ -13,7 +13,7 @@ public class Estoque {
         listaProdutos.add(produto);
     }
 
-    public boolean removerProduto(String nomeProduto) {
+    public void removerProduto(String nomeProduto) {
 
         Iterator<Produto> iterator = listaProdutos.iterator();
 
@@ -23,10 +23,9 @@ public class Estoque {
             if (p.getNome().equalsIgnoreCase(nomeProduto)) {
                 iterator.remove();
 
-                return true;
+                return;
             }
         }
-        return false;
     }
 
     public Produto acharProdutoNaLista(String identificador) {
@@ -46,7 +45,8 @@ public class Estoque {
           return null;
     }
 
-
-
+    public ArrayList<Produto> listarTodosOsProdutos() {
+        return listaProdutos;
+    }
 
 }

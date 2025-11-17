@@ -89,10 +89,10 @@ public class ControleDeEstoque {
                     darBaixaProduto();
                     break;
                 case 5:
-                    //consultarProduto();
+                    consultarProduto();
                     break;
                 case 6:
-                    //verListaProdutos();
+                    verListaProdutos();
                     break;
                 case 7:
                     System.out.println("Voltando ao menu principal!");
@@ -130,10 +130,10 @@ public class ControleDeEstoque {
                     darBaixaProduto();
                     break;
                 case 3:
-                    //consultarProduto();
+                    consultarProduto();
                     break;
                 case 4:
-                    //verListaProdutos();
+                    verListaProdutos();
                     break;
                 case 5:
                     System.out.println("Voltando ao menu principal!");
@@ -363,12 +363,17 @@ public class ControleDeEstoque {
                     int quantidade = sc.nextInt();
                     sc.nextLine();
 
-                    if (estoque.darBaixaNoEstoque(identificador, quantidade)) {
-                        System.out.println("Baixa feita com sucesso!");
+                    if (quantidade > p.getQuantidade()) {
+                        System.out.println("Estoque insuficiente para retirada!");
+                        continue;
                     } else {
-                        System.out.println("Erro na entrada!");
+                        if (estoque.darBaixaNoEstoque(identificador, quantidade)) {
+                            System.out.println("Baixa feita com sucesso!");
+                        } else {
+                            System.out.println("Erro na saida!");
+                            continue;
+                        }
                     }
-
                     break;
 
                 case 2:
@@ -404,4 +409,54 @@ public class ControleDeEstoque {
 
         } while (true);
     }
+
+    public static void consultarProduto() {
+        do {
+            System.out.println("CONSULTAR PRODUTO");
+            System.out.println("""
+                    Pesquisa de produto (ID ou NOME):
+                    
+                    Digite aqui:\s""");
+            String identificador = sc.nextLine();
+
+            Produto p = estoque.BuscarProduto(identificador);
+
+            if (p != null) {
+                System.out.println(p.produtoFormatado());
+            } else {
+                System.out.println("Produto não encontrado!");
+                System.out.println("\nVerifique se o NOME ou o ID foram digitados corretamente.");
+                continue;
+            }
+
+            System.out.println("""
+                    Consultar outro produto?
+                    
+                    [ 1 ] SIM
+                    [ 2 ] NÃO
+                    
+                    Selecione uma opção:\s""");
+            int opcaoConsultarOutroProduto = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcaoConsultarOutroProduto) {
+                case 1:
+                    break;
+                case 2:
+                    System.out.println("Voltando ao menu principal!");
+                    return;
+                default:
+                    System.out.println("Opção inválida!");
+            }
+        } while (true);
+
+    }
+
+    public static void verListaProdutos(){
+
+        for (Produto p : estoque.obterListaCompleta()) {
+            System.out.println(p.produtoFormatadoConsulta());
+        }
+    }
+
 }

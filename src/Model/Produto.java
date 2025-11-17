@@ -4,10 +4,10 @@ public class Produto {
 
     private static int contadorId = 1;
 
-    private Integer id;
-    private String nome;
-    private Double precoUnitario;
-    private int quantidade;
+    private final Integer id;
+    private final String nome;
+    private final Double precoUnitario;
+    private int quantidade = 0;
 
     public Produto(String nome, Double precoUnitario) {
         this.id = contadorId;
@@ -24,16 +24,8 @@ public class Produto {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public Double getPrecoUnitario() {
         return precoUnitario;
-    }
-
-    public void setPrecoUnitario(Double precoUnitario) {
-        this.precoUnitario = precoUnitario;
     }
 
     public int getQuantidade() {
@@ -47,5 +39,26 @@ public class Produto {
     @Override
     public String toString() {
         return String.format("ID: %d | NOME: %s | PREÇO UNITARIO: R$ %.2f", id, nome, precoUnitario);
+    }
+
+    public String produtoFormatado() {
+        return String.format("""
+                    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                    | ID: %d
+                    | NOME: %s
+                    | PREÇO UNITÁRIO: R$ %.2f
+                    | QUANTIDADE EM ESTOQUE: %d und
+                    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-""", getId(), getNome(), getPrecoUnitario(), getQuantidade());
+    }
+
+    public String produtoFormatadoConsulta() {
+        return String.format("""
+                    =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+                    ***   PRODUTO   ***
+                    | ID: %d
+                    | NOME: %s
+                    | PREÇO UNITÁRIO: R$ %.2f
+                    | QUANTIDADE EM ESTOQUE: %d und
+                    | VALOR EM ESTOQUE (R$): R$ %.2f""",getId(), getNome(), getPrecoUnitario(), getQuantidade(), getQuantidade() * getPrecoUnitario());
     }
 }
